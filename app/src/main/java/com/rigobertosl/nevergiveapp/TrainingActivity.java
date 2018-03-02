@@ -1,10 +1,10 @@
 package com.rigobertosl.nevergiveapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -22,8 +22,6 @@ import android.widget.TextView;
 
 public class TrainingActivity extends MainActivity {
 
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +43,12 @@ public class TrainingActivity extends MainActivity {
             }
         });
 
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
@@ -105,27 +101,87 @@ public class TrainingActivity extends MainActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_training, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_training1, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
     }
 
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public static class FragmentTab1 extends Fragment {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Get the view from fragmenttab1.xml
+            View view = inflater.inflate(R.layout.fragment_training1, container, false);
+            return view;
+        }
+    }
+
+    public static class FragmentTab2 extends Fragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Get the view from fragmenttab1.xml
+            View view = inflater.inflate(R.layout.fragment_training2, container, false);
+            return view;
+        }
+    }
+
+    public static class FragmentTab3 extends Fragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Get the view from fragmenttab2.xml
+            View view = inflater.inflate(R.layout.fragment_training3, container, false);
+            return view;
+        }
+    }
+
+    public class ViewPagerAdapter extends FragmentPagerAdapter {
+
+        final int PAGE_COUNT = 3;
+        // Tab Titles
+        private String tabtitles[] = new String[]{"Tab1", "Tab2", "Tab3"};
+        Context context;
+
+        public ViewPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
-        public Fragment getItem(int position) {
-            return PlaceholderFragment.newInstance(position + 1);
+        public int getCount() {
+            return PAGE_COUNT;
         }
 
         @Override
-        public int getCount() {
-            return 3;
+        public Fragment getItem(int position) {
+            switch (position) {
+
+                // Open FragmentTab1.java
+                case 0:
+                    FragmentTab1 fragmenttab1 = new FragmentTab1();
+                    return fragmenttab1;
+
+                // Open FragmentTab2.java
+                case 1:
+                    FragmentTab2 fragmenttab2 = new FragmentTab2();
+                    return fragmenttab2;
+
+                // Open FragmentTab3.java
+                case 2:
+                    FragmentTab3 fragmenttab3 = new FragmentTab3();
+                    return fragmenttab3;
+            }
+            return null;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return tabtitles[position];
         }
     }
 }
