@@ -10,4 +10,6 @@
     <color name="buttonPressed">#c951ab</color>
     <color name="buttonPressedStroke">#99207b</color>
     <color name="achievementsRow">#c178bc</color>
+
+    <color name="album_title">#4c4c4c</color>
 </resources>

@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class TrainingActivity extends MainActivity {
+
     private SectionsPagerAdapter seleccionPagina;
     private ViewPager vistaPagina;
     public FloatingActionButton fab;

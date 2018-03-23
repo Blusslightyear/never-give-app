@@ -22,7 +22,7 @@ public class CustomExercisesAdapter extends ArrayAdapter<String>{
         final View customView = buckysInflater.inflate(R.layout.layout_training, parent,false);
 
         String contentItem = getItem(position);
-        final TextView content = (TextView) customView.findViewById(R.id.ejercicio);
+        final TextView content = (TextView) customView.findViewById(R.id.item_title);
 
         content.setText(contentItem);
         return customView;

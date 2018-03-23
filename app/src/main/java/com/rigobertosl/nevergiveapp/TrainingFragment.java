@@ -59,8 +59,7 @@ public class TrainingFragment extends Fragment {
         ArrayList<String> aux = new ArrayList<String>();
         if(cursor.moveToFirst()){
             do {
-                String varaible1 = cursor.getString(cursor.getColumnIndex(DataBaseContract.DataBaseEntryNameTrain.COLUMN_NAME));
-                aux.add(varaible1);
+                aux.add(cursor.getString(cursor.getColumnIndex(DataBaseContract.DataBaseEntryNameTrain.COLUMN_NAME)));
             }while (cursor.moveToNext());
         }
         String[] titles = aux.toArray(new String[aux.size()]);

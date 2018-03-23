@@ -178,7 +178,7 @@ public class DataBaseContract {
         values.put(DataBaseEntryListTrain.COLUMN_NAME, name);
         values.put(DataBaseEntryListTrain.COLUMN_SERIES, series);
         values.put(DataBaseEntryListTrain.COLUMN_REPETICIONES, repeticiones);
-        values.put(DataBaseEntryListTrain.COLUMN_DESCANSO, repeticiones);
+        values.put(DataBaseEntryListTrain.COLUMN_DESCANSO, descanso);
 
         return mDb.insert(DataBaseEntryListTrain.TABLE_NAME, null, values);
     }
