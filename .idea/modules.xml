@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NeverGiveApp.iml" filepath="$PROJECT_DIR$/NeverGiveApp.iml" />
+      <module fileurl="file:///var/home/lab/alum0/02/92/806/Escritorio/NGU/never-give-app/app/app.iml" filepath="/var/home/lab/alum0/02/92/806/Escritorio/NGU/never-give-app/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file:///var/home/lab/alum0/02/92/806/Escritorio/NGU/never-give-app/never-give-app.iml" filepath="/var/home/lab/alum0/02/92/806/Escritorio/NGU/never-give-app/never-give-app.iml" />
     </modules>
   </component>
 </project>
