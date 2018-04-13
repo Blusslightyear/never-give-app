@@ -17,15 +17,21 @@ import static java.lang.Long.valueOf;
  * Creamos esta clase para establecer el esquemas de las tablas
  */
 public class DataBaseContract {
-    public DataBaseContract(Context context) {
-        this.context = context;
-    }
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "dbNeverGiveApp.db";
     private static final String TEXT_TYPE = " TEXT";
     private static final String LONG_TYPE = " LONG";
     private static final String COMMA_SEP = ",";
+
+    private final Context context;
+    private DataBaseHelper mDbHelper;
+    private SQLiteDatabase mDb;
+
+
+    public DataBaseContract(Context context) {
+        this.context = context;
+    }
 
     /*Establecemos contenido de las tablas*/
     public static class DataBaseEntryNameTrain implements BaseColumns {
@@ -96,11 +102,6 @@ public class DataBaseContract {
         private static final String SQL_DELETE_ENTRIES_FOODS =
                 "DROP TABLE IF EXISTS " + DataBaseContract.DataBaseEntryFoods.TABLE_NAME;
     }
-
-    private DataBaseHelper mDbHelper;
-    private SQLiteDatabase mDb;
-
-    private final Context context;
 
     public static class DataBaseHelper extends SQLiteOpenHelper {
 
