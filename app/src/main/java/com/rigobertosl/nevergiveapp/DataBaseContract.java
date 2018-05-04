@@ -838,9 +838,9 @@ public class DataBaseContract {
         return points;
     }
 
-    /** Devuelve todos los ejercicios de todas las tablas como un ArrayList<Exercise> **/
-    public ArrayList<Exercise> getAllExercisesOfDataBase() {
-        ArrayList<Exercise> exercises = new ArrayList<>();
+    /** Devuelve el número de ejercicios total de la base de datos **/
+    public int getNumOfAllExercisesFromDataBase() {
+        int contador = 0;
 
         String selectQuery = "SELECT * FROM " + DataBaseEntryListTrain.TABLE_NAME;
         mDb = mDbHelper.getReadableDatabase();
@@ -849,14 +849,10 @@ public class DataBaseContract {
 
         if(cursor.moveToFirst()) {
             do {
-                Exercise newExercise = new Exercise(cursor.getString(cursor.getColumnIndex(DataBaseEntryListTrain.COLUMN_NAME)),cursor.getString(cursor.getColumnIndex(DataBaseEntryListTrain.COLUMN_SERIES)),
-                        cursor.getString(cursor.getColumnIndex(DataBaseEntryListTrain.COLUMN_REPETICIONES)), cursor.getString(cursor.getColumnIndex(DataBaseEntryListTrain.COLUMN_DESCANSO)),
-                        cursor.getString(cursor.getColumnIndex(DataBaseEntryListTrain.COLUMN_TYPE)), null, null);
-                newExercise.setId(valueOf(cursor.getString(cursor.getColumnIndex(DataBaseEntryTrain._ID))));
-                exercises.add(newExercise);
+                contador++;
             } while (cursor.moveToNext());
         }
-        return exercises;
+        return contador;
     }
 
     public ArrayList<Achievement> getAllAchievementsCompleted(){

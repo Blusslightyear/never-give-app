@@ -39,4 +39,8 @@ public class Achievement {
     public boolean isCompleted() {
         return isCompleted;
     }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
+    }
 }
